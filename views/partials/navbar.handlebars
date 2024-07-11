@@ -1,0 +1,15 @@
+<nav id='navbar'>
+    <a href='/' id='logo'>
+        <img src='/img/toughts_logo.png' alt='Toughts' />
+    </a>
+    <ul>
+        <li><a href='/'>Publicadas</a></li>
+        {{#if session.userid}}
+        <li><a href='/toughts/dashboard'>Dashboard</a></li>
+        <li><a href='/logout'>Sair</a></li>
+        {{else}}
+        <li><a href='/login'>Entrar</a></li>
+        <li><a href='/register'>Registrar</a></li>
+        {{/if}}
+    </ul>
+</nav>
