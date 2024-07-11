@@ -7,6 +7,27 @@
             <input type='text' name='title' placeholder='Digite o título' />
             <input type='text' name='description' placeholder='Digite a publicação' />
         </div>
+        <div class='wrapper'>
+            <div class="upload">
+                <div class="upload-wrapper">
+                    <div class="upload-img">
+                        <!-- image here -->
+                    </div>
+                    <div class="upload-info">
+                        <p>
+                            <span class="upload-info-value">0</span> arquivos(s) selecionados.
+                        </p>
+                    </div>
+                    <div class="upload-area">
+                        <div class="upload-area-img">
+                            <img src="../../public/images/upload.png" alt="">
+                        </div>
+                        <p class="upload-area-text">Selecionar imagens ou <span>procurar</span>.</p>
+                    </div>
+                    <input type="file" class="visually-hidden" id="upload-input" multiple>
+                </div>
+            </div>
+        </div>
         <input type='submit' value='Criar Publicação' />
     </form>
 </div>

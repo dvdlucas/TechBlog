@@ -24,7 +24,7 @@ const Publication = db.define("Publication", {
   },
 });
 
-User.hasMany(Publication);
 Publication.belongsTo(User);
+User.hasMany(Publication);
 
 module.exports = Publication;

@@ -1,14 +1,18 @@
 const express = require("express");
-const exps = require("express-handlebars");
+const exphbs = require("express-handlebars");
 const session = require("express-session");
-const fileStore = require("session-file-store");
+const FileStore = require("session-file-store")(session);
 const flash = require("express-flash");
 const User = require("./models/User");
 const Publication = require("./models/Publication");
+const PublicationRoutes = require("./routes/PublicationRoutes");
+const AuthRoutes = require("./routes/AuthRoute");
 const conn = require("./db/coon");
+const PublicationController = require("./controllers/PublicationController");
+
 const app = express();
 
-app.engine("handlebars", exps.engine());
+app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,7 +23,7 @@ app.use(
     secret: "nosso_secret",
     resave: false,
     saveUninitialized: false,
-    store: new fileStore({
+    store: new FileStore({
       logFn: function () {},
       path: require("path").join(require("os").tmpdir(), "sessions"),
     }),
@@ -42,9 +46,15 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/publications/", PublicationRoutes);
+app.use("/", AuthRoutes);
+app.get("/", PublicationController.showPublications);
+
 conn
   .sync()
   .then(() => {
-    app.listen(3000);
+    app.listen(3000, () => {
+      console.log("Servidor rodando na porta 3000");
+    });
   })
   .catch((err) => console.log(err));
