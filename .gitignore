@@ -4,3 +4,4 @@ node_modules/
 .vs/
 .public/
 .pdf
+.env
