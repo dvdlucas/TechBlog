@@ -2,7 +2,7 @@ const db = require("../db/coon");
 const { DataTypes } = require("sequelize");
 const User = require("./User");
 
-const Publication = db.define("Publication", {
+const Post = db.define("Post", {
   title: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -24,7 +24,7 @@ const Publication = db.define("Publication", {
   },
 });
 
-Publication.belongsTo(User);
-User.hasMany(Publication);
+Post.belongsTo(User);
+User.hasMany(Post);
 
-module.exports = Publication;
+module.exports = Post;

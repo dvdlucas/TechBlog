@@ -3,12 +3,13 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const flash = require("express-flash");
+const path = require("path");
 const User = require("./models/User");
-const Publication = require("./models/Publication");
-const PublicationRoutes = require("./routes/PublicationRoutes");
-const AuthRoutes = require("./routes/AuthRoute");
+const Post = require("./models/Post");
+const PostRoutes = require("./routes/PostRoutes");
+const AuthRoutes = require("./routes/AuthRoutes");
 const conn = require("./db/coon");
-const PublicationController = require("./controllers/PublicationController");
+const PostController = require("./controllers/PostController");
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const sessionPath = path.join(__dirname, "session");
 
 app.use(
   session({
@@ -25,7 +28,7 @@ app.use(
     saveUninitialized: false,
     store: new FileStore({
       logFn: function () {},
-      path: require("path").join(require("os").tmpdir(), "sessions"),
+      path: sessionPath,
     }),
     cookie: {
       secure: false,
@@ -46,9 +49,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/publications/", PublicationRoutes);
+app.use("/post/", PostRoutes);
 app.use("/", AuthRoutes);
-app.get("/", PublicationController.showPublications);
+app.get("/", PostController.showPost);
 
 conn
   .sync()
