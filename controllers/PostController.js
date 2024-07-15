@@ -3,8 +3,14 @@ const User = require("../models/User");
 
 module.exports = class PostController {
   static async showPost(req, res) {
-    res.render("toughts/home");
+    res.render("posts/home");
   }
 
-  static async create(req, res) {}
+  static async dashboard(req, res) {
+    res.render("posts/dashboard");
+  }
+
+  static create(req, res) {
+    res.render("posts/create");
+  }
 };

@@ -49,7 +49,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/post/", PostRoutes);
+app.use("/posts", PostRoutes);
 app.use("/", AuthRoutes);
 app.get("/", PostController.showPost);
 
