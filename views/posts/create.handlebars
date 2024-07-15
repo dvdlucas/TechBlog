@@ -1,17 +1,19 @@
-<div class='tought-form-container'>
+<div class='auth-container'>
     <a href='/posts/dashboard'>Voltar</a>
     <h1>Criando um Post:</h1>
     <form action='/posts/add' method='POST'>
         <div class='form-control'>
             <label for='title'>Título:</label>
             <input type='text' name='title' placeholder='Digite o título' />
+            <label for='description'>Descrição:</label>
             <input type='text' name='description' placeholder='Digite a publicação' />
         </div>
+        <!--
         <div class='wrapper'>
             <div class="upload">
                 <div class="upload-wrapper">
                     <div class="upload-img">
-                        <!-- image here -->
+                         image here
                     </div>
                     <div class="upload-info">
                         <p>
@@ -28,6 +30,7 @@
                 </div>
             </div>
         </div>
+        -->
         <input type='submit' value='Criar Post' />
     </form>
 </div>

@@ -4,6 +4,7 @@ const router = express.Router();
 const checkAuth = require("../helpers/auth").checkAuth;
 
 router.get("/add", checkAuth, PostController.create);
+router.post("/add", checkAuth, PostController.createPost);
 router.get("/dashboard", checkAuth, PostController.dashboard);
 router.get("/", PostController.showPost);
 
