@@ -5,7 +5,7 @@
     </div>
     <h3>Seus Posts:</h3>
     <ul>
-        {{#each toughts}}
+        {{#each posts}}
         <li>
             <span class='label'>{{this.title}}</span>
             <span class='label'>{{this.description}}</span>
@@ -19,7 +19,7 @@
         </li>
         {{/each}}
     </ul>
-    {{#if emptyToughts}}
+    {{#if emptyPosts}}
     <p>Ainda não há nenhum post cadastrado, crie um novo
         <a href='/posts/add'>clicando aqui</a>
     </p>

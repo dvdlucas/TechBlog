@@ -2,11 +2,13 @@
     <a href="/posts/dashboard">Voltar</a>
     <h1>Editando um Pensamento:</h1>
     <form action="/posts/edit" method="POST">
-        <input type="hidden" name="id" value={{tought.id}}>
+        <input type="hidden" name="id" value={{post.id}}>
         <div class="form-control">
             <label for="title">Título:</label>
-            <input type="text" name="title" placeholder="Digite o título" value="{{tought.title}}">
+            <input type="text" name="title" placeholder="Digite o título" value="{{post.title}}">
+            <label for="title">Descrição:</label>
+            <textarea cols="30" rows="10" type="text" name="description" placeholder="Digite a descrição" value="{{post.description}}"></textarea>
         </div>
-        <input type="submit" value="Editar Pensamento">
+        <input type="submit" value="Editar Post">
     </form>
 </div>
