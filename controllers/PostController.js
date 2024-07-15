@@ -1,13 +1,37 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
-
+const { Op } = require("sequelize");
 module.exports = class PostController {
   static async showPost(req, res) {
+    let search = "";
+
+    if (req.query.search) {
+      search = req.query.search;
+    }
+
+    let order = "DESC";
+
+    if (req.query.order == "old") {
+      order = "ASC";
+    } else {
+      order = "DESC";
+    }
+
     const postsData = await Post.findAll({
       include: User,
+      where: {
+        title: { [Op.like]: `%${search}%` },
+      },
+      order: [["createdAt", order]],
     });
     const posts = postsData.map((result) => result.get({ plain: true }));
-    res.render("posts/home", { posts });
+
+    let postsQty = posts.length;
+
+    if (postsQty === 0) {
+      postsQty = false;
+    }
+    res.render("posts/home", { posts, search, postsQty });
   }
 
   static async dashboard(req, res) {
