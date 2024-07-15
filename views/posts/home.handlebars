@@ -1,13 +1,13 @@
 <div class="home-header">
     {{#if search}}
     <h1>Você está buscando por: <span>{{search}}</span></h1>
-    {{#if toughtsQty }}
-    <p>Foram encontradas <span>{{toughtsQty}}</span> publicações(s)</p>
+    {{#if postsQty }}
+    <p>Foram encontradas <span>{{postsQty}}</span> publicações(s)</p>
     {{else}}
     <p>Nenhum post encontrado para o termo <span>{{search}}</span></p>
     {{/if}}
     {{else}}
-    <h1>Algumas dos nossos ultimos <span>Posts</span></h1>
+    <h1>Alguns dos nossos ultimos <span>Posts</span></h1>
     {{/if}}
     <form action="/" method="GET">
         <input type="text" name="search" placeholder="Está buscando por algo?">
@@ -29,11 +29,14 @@
     </div>
 </div>
 <div class="toughts-container">
-    {{#each toughts}}
+    {{#each posts}}
     <figure>
-        <blockquote>
-            "{{this.title}}"
-        </blockquote>
+        <h3>
+            {{this.title}}
+        </h3>
+        <p>
+            "{{this.description}}"
+        </p>
         <figcaption>por <span>{{this.User.name}}</span></figcaption>
     </figure>
     {{/each}}
