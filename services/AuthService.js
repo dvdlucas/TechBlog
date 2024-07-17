@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 module.exports = class AuthService {
   static async create(userData) {
-    const { name, email, password, confirmpassword, images } = userData;
+    const { name, email, password, confirmpassword } = userData;
     //validations
     if (!name) {
       request.flash("message", "O nome é obrigatório");
@@ -20,10 +20,6 @@ module.exports = class AuthService {
     if (password != confirmpassword) {
       throw new Error("as senhas não são iguais");
     }
-
-    // Add images to userData
-    userData.images = images;
-
     // Create user
     const newUser = await User.create(userData);
 

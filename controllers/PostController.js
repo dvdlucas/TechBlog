@@ -60,7 +60,6 @@ module.exports = class PostController {
   static async createPost(req, res) {
     const { title, description } = req.body;
     const UserId = req.session.userId;
-    const images = "publicimages\techblog.jpg";
     if (!title) {
       req.flash("message", "Necessário um titulo para registar o post!");
       res.render("posts/add");
@@ -80,7 +79,6 @@ module.exports = class PostController {
       title,
       description,
       UserId,
-      images,
     };
     try {
       await Post.create(post);

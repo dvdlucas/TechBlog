@@ -11,17 +11,6 @@ const Post = db.define("Post", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  images: {
-    type: DataTypes.JSON,
-    allowNull: false,
-    get() {
-      const images = this.getDataValue("images");
-      return images ? JSON.parse(images) : [];
-    },
-    set(images) {
-      this.setDataValue("images", JSON.stringify(images));
-    },
-  },
 });
 
 Post.belongsTo(User);
