@@ -32,5 +32,16 @@
     {{> footer}}
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            const flashMessages = document.querySelectorAll('.message');
+            flashMessages.forEach(function (message) {
+                message.style.display = 'none';
+            });
+        }, 5000); // 5000 ms = 5 segundos
+    });
+</script>
+
 
 </html>
